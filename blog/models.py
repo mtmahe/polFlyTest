@@ -5,8 +5,8 @@ from django.conf import settings
 from django.utils.timezone import make_aware
 
 def auto_now():
-    # return datetime.datetime.now() - datetime.timedelta(days=1)
     naive_datetime = datetime.datetime.now()
+    # Fixing errors in pytest due to lacking timezone
     aware_datetime = make_aware(naive_datetime)
 
     return aware_datetime
@@ -17,6 +17,7 @@ class Post(models.Model):
     posted_by = models.CharField(max_length=50, default="root")
     posted_at = models.DateTimeField(default=auto_now)
     edited_at = models.DateTimeField(auto_now=True)
+    view_count = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
