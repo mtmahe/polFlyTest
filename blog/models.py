@@ -1,8 +1,15 @@
 import datetime
 from django.db import models
 
+from django.conf import settings
+from django.utils.timezone import make_aware
+
 def auto_now():
-    return datetime.datetime.now() - datetime.timedelta(days=1)
+    # return datetime.datetime.now() - datetime.timedelta(days=1)
+    naive_datetime = datetime.datetime.now()
+    aware_datetime = make_aware(naive_datetime)
+
+    return aware_datetime
 
 class Post(models.Model):
     title = models.CharField(max_length=128)
