@@ -41,11 +41,12 @@ function isValid (input, expectedCost, expectedOldestYear) {
 function testIsValid () {
   // My assumptions: Vehicles[] will not be empty and will contain at least 1 Truck or Tractor
 
+  // Does it work with 1 valid vehicle?
   const first = [
     {type: 'Truck', year: 1990, value: 500}
   ]
   
-  if (isValid(first, 700, 1985)) {
+  if (isValid(first, 500, 1990)) {
     console.log("First test passed")
   } else {
     console.log("First test failed")
@@ -57,7 +58,7 @@ function testIsValid () {
     {type: 'Tractor', year: 1985, value: 200}
   ]
 
-  if (isValid(first, 700, 1985)) {
+  if (isValid(second, 700, 1985)) {
     console.log("Second test passed")
   } else {
     console.log("Second test failed")
@@ -75,6 +76,14 @@ function testIsValid () {
   } else {
     console.log("Third test failed")
   }
+
+  const fourth = []
+
+  if (isValid(fourth, 0, 3000)) {
+    console.log("Third test passed")
+  } else {
+    console.log("Third test failed")
+  }  
   
 }
 
